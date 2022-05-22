@@ -252,8 +252,6 @@ export default {
     const authData = JSON.parse(localStorage.getItem("user")).sys;
     this.userAccess = authData.user.access;
     const page = authData.page;
-    console.log(this.userAccess, "audit");
-
     let flag = false;
     for (var i = 0; i < page.length; i++) {
       if (this.$route.name === page[i].name) {
