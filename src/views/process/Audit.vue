@@ -176,7 +176,7 @@ export default {
     if (flag) {
       console.log("允许发送api");
       this.axios
-        .get("http://fanyi.bhmanhua.top/server/api/manage/getAuditData.php")
+        .get("http://manage.bhmanhua.top/server/api/manage/getAuditData.php")
         .then((response) => {
           console.log(response);
           this.data = response.data;

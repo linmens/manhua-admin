@@ -166,7 +166,7 @@ export default {
     console.log(flag, "flag");
     if (flag) {
       this.axios
-        .get("http://fanyi.bhmanhua.top/server/api/manage/getExtractData.php")
+        .get("http://manage.bhmanhua.top/server/api/manage/getExtractData.php")
         .then((response) => {
           console.log(response);
           this.data = response.data;

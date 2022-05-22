@@ -271,7 +271,7 @@ export default {
       // this.editDrawer = false
       console.log(this.editData);
       this.axios
-        .put(`http://fanyi.bhmanhua.top/server/api/manage/putUserList.php`, {
+        .put(`http://manage.bhmanhua.top/server/api/manage/putUserList.php`, {
           editData: this.editData,
         })
         .then((response) => {
@@ -285,7 +285,7 @@ export default {
     getUserList() {
       this.axios
         .get(
-          `http://fanyi.bhmanhua.top/server/api/manage/userList.php?page=${this.currentPage}`
+          `http://manage.bhmanhua.top/server/api/manage/userList.php?page=${this.currentPage}`
         )
         .then((response) => {
           console.log(response);
