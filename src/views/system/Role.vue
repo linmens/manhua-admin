@@ -270,150 +270,150 @@ export default {
     cellMenuSelect(row) {
       this.showMenuModal = true;
       const menu = this.menuData;
-      if (row.name === "ROLE_ADMIN") {
-        menu[0].checked = true;
-        this.currentMenuSet = menu;
-      } else if (row.name === "ROLE_AUDIT") {
-        this.currentMenuSet = [];
-        menu[0].checked = false;
-        this.currentMenuSet = menu;
-      } else {
-        this.currentMenuSet = menu;
-      }
-      //   switch (row.name) {
-      //     case "ROLE_ADMIN":
-      //       this.menuData = [
-      //         {
-      //           title: "首页",
-      //           expand: true,
-      //           value: "/",
-      //           checked: true,
-      //           children: [
-      //             {
-      //               title: "系统管理",
-      //               expand: true,
-      //               value: "/system",
-      //               checked: true,
-      //               children: [
-      //                 {
-      //                   title: "用户管理",
-      //                   expand: true,
-      //                   value: "/system/user",
-      //                   checked: true,
-      //                 },
-      //                 {
-      //                   title: "页面权限管理",
-      //                   expand: true,
-      //                   value: "/system/menu",
-      //                   checked: true,
-      //                 },
-      //                 {
-      //                   title: "角色管理",
-      //                   expand: true,
-      //                   value: "/system/role",
-      //                   checked: true,
-      //                 },
-      //               ],
-      //             },
-      //             {
-      //               title: "流程页面",
-      //               expand: true,
-      //               value: "/system",
-      //               checked: true,
-      //               children: [
-      //                 {
-      //                   title: "审核原图",
-      //                   expand: true,
-      //                   value: "/process/audit",
-      //                   checked: true,
-      //                 },
-      //                 {
-      //                   title: "提炼日文",
-      //                   expand: true,
-      //                   value: "/process/extract",
-      //                   checked: true,
-      //                 },
-      //                 {
-      //                   title: "翻译嵌字",
-      //                   expand: true,
-      //                   value: "/system/role",
-      //                   checked: true,
-      //                 },
-      //               ],
-      //             },
-      //           ],
-      //         },
-      //       ];
+      // if (row.name === "ROLE_ADMIN") {
+      //   menu[0].checked = true;
+      //   this.currentMenuSet = menu;
+      // } else if (row.name === "ROLE_AUDIT") {
+      //   this.currentMenuSet = [];
+      //   menu[0].checked = false;
+      //   this.currentMenuSet = menu;
+      // } else {
+      //   this.currentMenuSet = menu;
+      // }
+      switch (row.name) {
+        case "ROLE_ADMIN":
+          this.menuData = [
+            {
+              title: "首页",
+              expand: true,
+              value: "/",
+              checked: true,
+              children: [
+                {
+                  title: "系统管理",
+                  expand: true,
+                  value: "/system",
+                  checked: true,
+                  children: [
+                    {
+                      title: "用户管理",
+                      expand: true,
+                      value: "/system/user",
+                      checked: true,
+                    },
+                    {
+                      title: "页面权限管理",
+                      expand: true,
+                      value: "/system/menu",
+                      checked: true,
+                    },
+                    {
+                      title: "角色管理",
+                      expand: true,
+                      value: "/system/role",
+                      checked: true,
+                    },
+                  ],
+                },
+                {
+                  title: "流程页面",
+                  expand: true,
+                  value: "/system",
+                  checked: true,
+                  children: [
+                    {
+                      title: "审核原图",
+                      expand: true,
+                      value: "/process/audit",
+                      checked: true,
+                    },
+                    {
+                      title: "提炼日文",
+                      expand: true,
+                      value: "/process/extract",
+                      checked: true,
+                    },
+                    {
+                      title: "翻译嵌字",
+                      expand: true,
+                      value: "/system/role",
+                      checked: true,
+                    },
+                  ],
+                },
+              ],
+            },
+          ];
 
-      //       break;
-      //     case "ROLE_AUDIT":
-      //       this.menuData = [
-      //         {
-      //           title: "首页",
-      //           expand: true,
-      //           value: "/",
-      //           selected: false,
-      //           checked: false,
-      //           children: [
-      //             {
-      //               title: "系统管理",
-      //               expand: true,
-      //               value: "/system",
-      //               selected: false,
-      //               checked: false,
-      //               children: [
-      //                 {
-      //                   title: "用户管理",
-      //                   expand: true,
-      //                   value: "/system/user",
-      //                   checked: false,
-      //                 },
-      //                 {
-      //                   title: "页面权限管理",
-      //                   expand: true,
-      //                   value: "/system/menu",
-      //                   checked: false,
-      //                 },
-      //                 {
-      //                   title: "角色管理",
-      //                   expand: true,
-      //                   value: "/system/role",
-      //                   checked: false,
-      //                 },
-      //               ],
-      //             },
-      //             {
-      //               title: "流程页面",
-      //               expand: true,
-      //               value: "/system",
-      //               checked: false,
-      //               children: [
-      //                 {
-      //                   title: "审核原图",
-      //                   expand: true,
-      //                   value: "/process/audit",
-      //                   checked: true,
-      //                 },
-      //                 {
-      //                   title: "提炼日文",
-      //                   expand: true,
-      //                   value: "/process/extract",
-      //                   checked: false,
-      //                 },
-      //                 {
-      //                   title: "翻译嵌字",
-      //                   expand: true,
-      //                   value: "/system/role",
-      //                   checked: false,
-      //                 },
-      //               ],
-      //             },
-      //           ],
-      //         },
-      //       ];
-      //       break;
-      //     default:
-      //   }
+          break;
+        case "ROLE_AUDIT":
+          this.menuData = [
+            {
+              title: "首页",
+              expand: true,
+              value: "/",
+              selected: false,
+              checked: false,
+              children: [
+                {
+                  title: "系统管理",
+                  expand: true,
+                  value: "/system",
+                  selected: false,
+                  checked: false,
+                  children: [
+                    {
+                      title: "用户管理",
+                      expand: true,
+                      value: "/system/user",
+                      checked: false,
+                    },
+                    {
+                      title: "页面权限管理",
+                      expand: true,
+                      value: "/system/menu",
+                      checked: false,
+                    },
+                    {
+                      title: "角色管理",
+                      expand: true,
+                      value: "/system/role",
+                      checked: false,
+                    },
+                  ],
+                },
+                {
+                  title: "流程页面",
+                  expand: true,
+                  value: "/system",
+                  checked: false,
+                  children: [
+                    {
+                      title: "审核原图",
+                      expand: true,
+                      value: "/process/audit",
+                      checked: true,
+                    },
+                    {
+                      title: "提炼日文",
+                      expand: true,
+                      value: "/process/extract",
+                      checked: false,
+                    },
+                    {
+                      title: "翻译嵌字",
+                      expand: true,
+                      value: "/system/role",
+                      checked: false,
+                    },
+                  ],
+                },
+              ],
+            },
+          ];
+          break;
+        default:
+      }
 
       this.cellMenuSelectData.name = row.name;
     },
