@@ -98,6 +98,7 @@ export default {
     return {
       allAuditNum: 0,
       loading: false,
+      currentPage: 0,
       imageViewModal: false,
       count: 0,
       userAccess: "",
@@ -197,7 +198,8 @@ export default {
         )
         .then((response) => {
           console.log(response);
-          this.data = response.data;
+          this.data = response.data.waitList;
+          this.allAuditNum = response.data.allAuditNum;
         });
     },
     pageChange(page) {
