@@ -268,15 +268,11 @@ export default {
   },
   methods: {
     editSubmit() {
-      // this.editDrawer = false
-      console.log(this.editData);
       this.axios
         .put(`http://manage.bhmanhua.top/server/api/manage/putUserList.php`, {
           editData: this.editData,
         })
-        .then((response) => {
-          console.log(response);
-        });
+        .then((response) => {});
     },
     editUser(row) {
       this.editDrawer = true;
