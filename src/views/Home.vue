@@ -64,10 +64,18 @@
             boxShadow: '0 2px 3px 2px rgba(0,0,0,.1)',
           }"
         >
-          <div class="header-item ivu-mr-8">
-            <Avatar size="mini" :src="users.avatar"></Avatar>
-          </div>
-          <div class="header-item">{{ users.name }}</div>
+          <Dropdown @on-click="dropDownClick">
+            <div class="header-item">
+              <Avatar size="mini" :src="users.avatar"></Avatar>
+              <div class="ivu-ml-8">{{ users.name }}</div>
+            </div>
+            <template #list>
+              <DropdownMenu>
+                <DropdownItem>个人中心</DropdownItem>
+                <DropdownItem name="logout">退出登陆</DropdownItem>
+              </DropdownMenu>
+            </template>
+          </Dropdown>
         </Header>
         <Content :style="{ padding: '64px 16px 16px' }">
           <Breadcrumb :style="{ margin: '16px 0' }">
@@ -105,6 +113,13 @@ export default {
     },
   },
   methods: {
+    dropDownClick(name) {
+      console.log(name);
+      if (name === "logout") {
+        localStorage.clear();
+        this.$router.push("/");
+      }
+    },
     getBreadcrumb() {
       console.log(this.$route); //可以获取上下文路由 也就是可以获取父亲和孩子路由组成的数组
       if (Object.keys(this.$route.matched).length > 0) {
@@ -131,6 +146,9 @@ export default {
 }
 .header-item {
   padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   cursor: pointer;
 }
 .header-item:hover {
