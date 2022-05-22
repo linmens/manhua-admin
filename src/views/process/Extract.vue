@@ -27,6 +27,16 @@
           >
         </template>
       </Table>
+      <div class="ivu-mt ivu-text-center">
+        <Page
+          :total="allExtractNum"
+          show-total
+          show-elevator
+          @on-change="pageChange"
+          @on-prev="pageChange"
+          @on-next="pageChange"
+        />
+      </div>
       <div class="extract-image-box" v-if="pickViewModal">
         <img :src="imageViewSrc" style="width: 100%" />
       </div>
@@ -81,6 +91,8 @@
 export default {
   data() {
     return {
+      allExtractNum: 0,
+      currentPage: 1,
       pickViewModal: false,
       userAccess: "",
       imageViewModalLayout: {
@@ -163,17 +175,26 @@ export default {
         }
       }
     }
-    console.log(flag, "flag");
     if (flag) {
-      this.axios
-        .get("http://manage.bhmanhua.top/server/api/manage/getExtractData.php")
-        .then((response) => {
-          console.log(response);
-          this.data = response.data;
-        });
+      this.getExtractList();
     }
   },
   methods: {
+    getExtractList() {
+      this.axios
+        .get(
+          `http://manage.bhmanhua.top/server/api/manage/getExtractData.php?page=${this.currentPage}`
+        )
+        .then((response) => {
+          console.log(response);
+          this.data = response.data.passList;
+          this.allExtractNum = response.data.allExtractNum;
+        });
+    },
+    pageChange(page) {
+      this.currentPage = page;
+      this.getExtractList();
+    },
     handleSubmit(name) {
       this.$refs[name].validate((valid) => {
         if (valid) {
@@ -226,18 +247,11 @@ export default {
   bottom: 0;
   z-index: 1001;
   left: 0;
-  /* width: auto; */
-  /* padding: 20px; */
   overflow-y: scroll;
 }
 </style>
 
 <style lang="less">
-// .vertical-center-modal{
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-// }
 .vertical-center-modal .ivu-modal {
   top: 0;
   right: 0;

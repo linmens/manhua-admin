@@ -98,7 +98,7 @@ export default {
     return {
       allAuditNum: 0,
       loading: false,
-      currentPage: 0,
+      currentPage: 1,
       imageViewModal: false,
       count: 0,
       userAccess: "",
@@ -169,7 +169,6 @@ export default {
     };
   },
   mounted() {
-    // this.userAccess = JSON.parse(localStorage.getItem('user')).sys.user.access;
     const authData = JSON.parse(localStorage.getItem("user")).sys;
     this.userAccess = authData.user.access;
     const page = authData.page;
@@ -183,7 +182,6 @@ export default {
         }
       }
     }
-    console.log(flag, "flag");
     if (flag) {
       console.log("允许发送api");
       this.getAuditList();
