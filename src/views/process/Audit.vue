@@ -415,18 +415,6 @@ export default {
       // 设置canvas的真实宽高
       myCanvas.width = pixelRatio * myCanvas.offsetWidth; // 想当于 2 * 375 = 750
       myCanvas.height = pixelRatio * myCanvas.offsetHeight;
-      //   ctx.save();
-      //   ctx.beginPath();
-      //   ctx.strokeStyle = "red";
-      //   ctx.fillStyle = "red";
-      //   ctx.arc(x, y, 10, 0, 2 * Math.PI);
-      //   ctx.fill(); //开始填充
-      //   ctx.font = "14px bold";
-      //   ctx.fillStyle = "white";
-      //   ctx.fillText(num, x - 3, y + 4);
-      //   ctx.textAlign = "center";
-      //   ctx.stroke();
-      //   ctx.restore();
     },
   },
 };
@@ -500,14 +488,12 @@ img {
   bottom: 0;
   background-color: rgba(64, 64, 64, 0.762);
   width: 100px;
-  /* height: %; */
   height: calc(100% - 5px);
   overflow-y: scroll;
   overflow-x: hidden;
 }
 
 .pointItem {
-  /* background: #fff; */
   color: white;
   padding: 10px;
   display: flex;
