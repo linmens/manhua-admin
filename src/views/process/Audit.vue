@@ -35,7 +35,16 @@
             >
           </template>
         </Table>
-
+        <div class="ivu-mt ivu-text-center">
+          <Page
+            :total="allAuditNum"
+            show-total
+            show-elevator
+            @on-change="pageChange"
+            @on-prev="pageChange"
+            @on-next="pageChange"
+          />
+        </div>
         <!-- 待审核点击图片弹出 -->
         <Modal
           draggable
@@ -87,6 +96,7 @@ import { drag } from "../../components/pointer";
 export default {
   data() {
     return {
+      allAuditNum: 0,
       loading: false,
       imageViewModal: false,
       count: 0,
@@ -175,16 +185,25 @@ export default {
     console.log(flag, "flag");
     if (flag) {
       console.log("允许发送api");
-      this.axios
-        .get("http://manage.bhmanhua.top/server/api/manage/getAuditData.php")
-        .then((response) => {
-          console.log(response);
-          this.data = response.data;
-        });
+      this.getAuditList();
     }
   },
 
   methods: {
+    getAuditList() {
+      this.axios
+        .get(
+          `http://manage.bhmanhua.top/server/api/manage/getAuditData.php?page=${this.currentPage}`
+        )
+        .then((response) => {
+          console.log(response);
+          this.data = response.data;
+        });
+    },
+    pageChange(page) {
+      this.currentPage = page;
+      this.getAuditList();
+    },
     //   不通过的方法
     unpass(row) {
       this.$Modal.confirm({
@@ -207,22 +226,6 @@ export default {
         },
       });
     },
-
-    tabsClick(name) {
-      console.log(name);
-      this.axios
-        .get(
-          `http://manage.bhmanhua.top/server/api/getAuditData.php?type=${name}`,
-          {
-            type: name,
-          }
-        )
-        .then((response) => {
-          console.log(response);
-          this.data = response.data;
-        });
-    },
-
     toViewImage(row) {
       console.log(row);
       this.$Notice.info({
