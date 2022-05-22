@@ -112,7 +112,6 @@ export default {
   },
   methods: {
     dropDownClick(name) {
-      console.log(name);
       if (name === "logout") {
         localStorage.clear();
         this.$router.push("/");
